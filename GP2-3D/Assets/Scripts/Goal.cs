@@ -30,9 +30,6 @@ public class Goal : MonoBehaviour
             {
                 // Log for non-floor collisions (this will destroy them)
                 Debug.Log("Non-floor object collided: " + collision.gameObject.name);
-
-                // Destroy any non-floor object that collides
-                Destroy(collision.gameObject);
             }
         }
     }
