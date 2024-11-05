@@ -4,6 +4,7 @@ using UnityEngine;
 public class NPCPatrol : MonoBehaviour
 {
     public List<Transform> pathNodes = new List<Transform>();
+
     public float pathReachingRadius = 2f;
 
     private bool IsPathValid()
@@ -27,6 +28,7 @@ public class NPCPatrol : MonoBehaviour
         {
             return GetPositionOfPathNode(pathDestinationNodeIndex);
         }
+
         else
         {
             return agent.position;
@@ -37,15 +39,15 @@ public class NPCPatrol : MonoBehaviour
     {
         if (IsPathValid())
         {
-            // Check if reached the path destination  
             if ((agent.position - GetDestinationOnPath(agent, pathDestinationNodeIndex)).magnitude <= pathReachingRadius)
             {
-                // increment path destination index
                 pathDestinationNodeIndex = inverseOrder ? (pathDestinationNodeIndex - 1) : (pathDestinationNodeIndex + 1);
+
                 if (pathDestinationNodeIndex < 0)
                 {
                     pathDestinationNodeIndex += pathNodes.Count;
                 }
+
                 if (pathDestinationNodeIndex >= pathNodes.Count)
                 {
                     pathDestinationNodeIndex -= pathNodes.Count;

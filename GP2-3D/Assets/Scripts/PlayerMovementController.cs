@@ -9,12 +9,19 @@ public class PlayerMovementController : MonoBehaviour
 
     [Header("Adjustable Variables")]
     [SerializeField] public float horizontalAcceleration;
+
     [SerializeField] public float horizontalMaxSpeed;
+
     [SerializeField] public float verticalAccelleration;
+
     [SerializeField] public float verticalMaxSpeed;
+
     [SerializeField] public float gravityAccel;
+
     [SerializeField] public float maxFallSpeed;
+
     [SerializeField] public float friction;
+
     Vector3 currentVelocity;
 
     bool canMove = true;
@@ -27,7 +34,6 @@ public class PlayerMovementController : MonoBehaviour
         Vector3 playerInput = Vector3.zero;
         if (canMove)
         {
-            // Player Input
             Transform camTransform = Camera.main.transform;
             Vector3 verticalInput = new Vector3(0f, Input.GetAxis("Jump"), 0f);
             Vector3 horizontalInput = camTransform.right * Input.GetAxis("Horizontal") + camTransform.forward * Input.GetAxis("Vertical");
@@ -37,6 +43,7 @@ public class PlayerMovementController : MonoBehaviour
             AddVelocity(horizontalInput.normalized * horizontalAcceleration, horizontalMaxSpeed);
             AddVelocity(verticalInput.normalized * verticalAccelleration, verticalMaxSpeed);
         }
+
         controller.Move(currentVelocity * Time.deltaTime);
     }
 
@@ -44,6 +51,7 @@ public class PlayerMovementController : MonoBehaviour
     {
         canMove = value;
     }
+
     public void AddVelocity(Vector3 velocity, float speedLimit)
     {
         if (Vector3.Dot(currentVelocity, velocity.normalized) < speedLimit)
@@ -54,16 +62,15 @@ public class PlayerMovementController : MonoBehaviour
 
     private void PhysicsUpdate()
     {
-        // Friction
         if (currentVelocity.magnitude > 0)
         {
             Vector3 forceOfFriction = (-currentVelocity.normalized) * friction;
 
-            // Setting friction to zero
             if (currentVelocity.magnitude > forceOfFriction.magnitude)
             {
                 currentVelocity += forceOfFriction;
             }
+
             else
             {
                 currentVelocity = Vector3.zero;

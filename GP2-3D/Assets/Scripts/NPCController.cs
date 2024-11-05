@@ -8,6 +8,7 @@ public class NPCController : MonoBehaviour
     public NavMeshAgent m_NavMeshAgent { get; private set; }
 
     public NPCPatrol patrolPath;
+
     public int m_PathDestinationNodeIndex = 0;
 
     void Start()
