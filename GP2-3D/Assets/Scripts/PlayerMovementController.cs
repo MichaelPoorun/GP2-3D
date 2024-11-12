@@ -26,6 +26,26 @@ public class PlayerMovementController : MonoBehaviour
 
     bool canMove = true;
 
+    //public PlayerStates State = PlayerStates.Idle;
+
+    //PlayerStates st = PlayerStates.Idle;
+
+    //if walking under press left or right st = PlayerStates.Walking;
+
+    //if(!CanJump()) Goes outside of all functions and voids and stuff; ensures youre always checking if you can jump and should it be playing a jump animation
+    //{
+    //  st.PlayerStates.Jumping;
+    //}
+    //State = st;
+    //if (State == PlayerStates.Idle)
+    //{
+    //  SR.color.white;
+    //}
+    //else if(State == PlayerStates.Walking)
+    //{
+    //  sr.color.yellow;
+    //}
+
 
     private void Update()
     {
@@ -79,5 +99,30 @@ public class PlayerMovementController : MonoBehaviour
 
         AddVelocity(Vector3.down * gravityAccel, maxFallSpeed); // Gravity
     }
+
+    //public enum PlayerStates
+    //{
+    //    None = 0,
+    //    Idle = 1,
+    //    Walking = 2,
+    //    Jumping = 3,
+    //    Stunned = 4
+    //}
+
+    //public void SetState(PlayerStates st)
+   // {
+       // State = st;
+       // if(State == PlayerStates.Idle)            use this to change states
+   //}
+
+    //if (State == PlayerStates.Stunned)
+    //{
+    //  StunControls(); within this void you can make stunnedtimer decrease over time via time.deltatTime and then set the state to idle afterwards so that the player can move again
+    //  return;
+    //}
+    //else
+    //{
+    //  NormalControls(); 
+    //}
 
 }
